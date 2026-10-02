@@ -229,11 +229,11 @@
                 <!-- Fitur 3 -->
                 <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-3">
                     <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
-                        <i class="fas fa-clipboard-check"></i>
+                        <i class="fas fa-layer-group"></i>
                     </div>
-                    <h3 class="font-bold text-gray-900 text-base">Kuis Evaluasi 7 Soal</h3>
+                    <h3 class="font-bold text-gray-900 text-base">Line-by-Line & Hint AI</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Latihan formatif pilihan ganda dengan umpan balik langsung, pembahasan setiap langkah, dan ringkasan nilai akhir.
+                        16 soal latihan baris demi baris dengan pemeriksa kesetaraan otomatis, bantuan petunjuk Socratic Hint AI, serta Evaluasi Akhir 7 soal berdurasi 20 menit bebas AI.
                     </p>
                 </div>
             </div>
