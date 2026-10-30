@@ -1,0 +1,115 @@
+:root {
+    /* Apple-inspired surfaces and the single action blue from DESIGN.md. */
+    --biru-utama: #0066cc;
+    --biru-gelap: #1d1d1f;
+    --biru-hover: #005bb5;
+    --biru-terang: #0071e3;
+    --biru-di-gelap: #2997ff;
+    --biru-muda: #eef5ff;
+    --biru-border: #c9def7;
+
+    --putih: #ffffff;
+    --abu-latar: #f5f9ff;
+    --abu-kartu: #ffffff;
+    --abu-border: #dce7f3;
+    --abu-garis: #c5d5e8;
+    --teks-utama: #1d1d1f;
+    --teks-pudar: #333333;
+    --teks-halus: #7a7a7a;
+    --teks-di-gelap: #cccccc;
+    --kanvas-gelap: #272729;
+    --kanvas-gelap-2: #2a2a2c;
+    --kanvas-gelap-3: #252527;
+    --kanvas-hitam: #000000;
+
+    /* Status Matematika: Hijau Daun, Merah Bata, Amber Hangat */
+    --hijau-benar: #15803d;
+    --hijau-bg: #f0fdf4;
+    --hijau-border: #bbf7d0;
+
+    --merah-salah: #b91c1c;
+    --merah-bg: #fef2f2;
+    --merah-border: #fecaca;
+
+    --kuning-peringatan: #b45309;
+    --kuning-bg: #fffbeb;
+    --kuning-border: #fde68a;
+
+    --status-merah-terang: #e11d48;
+    --status-merah-border-terang: #fecdd3;
+    --status-hijau-teks: #166534;
+    --status-hijau-latar: #dcfce7;
+    --status-kuning-latar: #fef3c7;
+    --abu-kontrol: #cbd5e1;
+
+    /* SF system stacks use the platform SF faces where available. */
+    --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    --font-utama: "SF Pro Text", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    --font-matematika: "Cambria Math", "KaTeX_Math", Cambria, Georgia, "Times New Roman", serif;
+
+    --radius-xs: 5px;
+    --radius-sm: 8px;
+    --radius-md: 11px;
+    --radius-lg: 18px;
+
+    --bayangan-sm: none;
+    --bayangan-md: none;
+    --bayangan-lg: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-utama);
+    background-color: var(--putih);
+    color: var(--teks-utama);
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--teks-utama);
+    letter-spacing: -0.28px;
+    font-weight: 600 !important;
+}
+
+.font-math {
+    font-family: var(--font-matematika);
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+/* Press state follows the scale gesture in DESIGN.md. */
+button, .btn, .key-btn {
+    transition: transform 0.08s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+button:active:not(:disabled),
+.btn:active:not(:disabled),
+.key-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* Scrollbar Custom Minimalis */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--abu-latar);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--abu-garis);
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--teks-halus);
+}

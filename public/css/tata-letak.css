@@ -1,0 +1,511 @@
+/* Layout Container Siswa & Guru */
+.wadah-aplikasi {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Kiri */
+.sidebar-kiri {
+    width: 280px;
+    background-color: var(--putih);
+    border-right: 1px solid var(--abu-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+/* Brand Logo */
+.brand-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--biru-utama);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--putih);
+    font-size: 1.15rem;
+}
+
+.brand-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--biru-gelap);
+    line-height: 1.2;
+}
+
+.brand-subtitle {
+    font-size: 0.75rem;
+    color: var(--teks-pudar);
+    font-weight: 400;
+}
+
+/* Profil Box */
+.profil-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem;
+    background-color: var(--biru-muda);
+    border: 1px solid var(--biru-border);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+}
+
+.profil-avatar {
+    width: 38px;
+    height: 38px;
+    background-color: var(--biru-utama);
+    color: var(--putih);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.profil-info {
+    overflow: hidden;
+}
+
+.profil-nama {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--teks-utama);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profil-peran {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--biru-utama);
+    text-transform: uppercase;
+}
+
+/* Menu Navigasi Sidebar */
+.sidebar-section-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--teks-pudar);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+}
+
+.nav-item-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 0.85rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--teks-utama);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: all 0.15s ease-in-out;
+}
+
+.nav-item-link:hover {
+    background-color: var(--abu-latar);
+    border-color: var(--abu-border);
+}
+
+.nav-item-link.aktif {
+    background-color: var(--biru-muda);
+    color: var(--biru-utama);
+    border-color: var(--biru-border);
+}
+
+.nav-item-link.terkunci {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--abu-latar);
+}
+
+/* Area Konten Utama */
+.area-konten-utama {
+    margin-left: 280px;
+    flex: 1;
+    min-height: 100vh;
+    padding: 2rem 2.5rem;
+    max-width: 1200px;
+}
+
+/* Kartu / Box */
+.kartu {
+    background-color: var(--putih);
+    border: 1px solid var(--abu-border);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    box-shadow: var(--bayangan-sm);
+    margin-bottom: 1.5rem;
+}
+
+/* Tombol */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.btn-primary {
+    background-color: var(--biru-utama);
+    color: var(--putih);
+}
+
+.btn-primary:hover {
+    background-color: var(--biru-hover);
+    box-shadow: var(--bayangan-md);
+}
+
+.btn-secondary {
+    background-color: var(--putih);
+    color: var(--biru-utama);
+    border: 1px solid var(--biru-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--biru-muda);
+}
+
+.btn-danger {
+    background-color: var(--merah-salah);
+    color: var(--putih);
+}
+
+.btn-success {
+    background-color: var(--hijau-benar);
+    color: var(--putih);
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 9999px;
+}
+
+.badge-biru {
+    background-color: var(--biru-muda);
+    color: var(--biru-utama);
+}
+
+.badge-hijau {
+    background-color: var(--hijau-bg);
+    color: var(--hijau-benar);
+    border: 1px solid var(--hijau-border);
+}
+
+.badge-merah {
+    background-color: var(--merah-bg);
+    color: var(--merah-salah);
+    border: 1px solid var(--merah-border);
+}
+
+.badge-kuning {
+    background-color: var(--kuning-bg);
+    color: var(--kuning-peringatan);
+    border: 1px solid var(--kuning-border);
+}
+
+/* Modal Kamus */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.modal-overlay.buka {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--putih);
+    border-radius: var(--radius-lg);
+    max-width: 650px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 2rem;
+    box-shadow: var(--bayangan-lg);
+    position: relative;
+}
+
+/* ==========================================================================
+   Format Tipografi Materi Pembelajaran (.materi-konten)
+   Prinsip: Bersih, Terbaca Jelas, Elegan, Rapi, Sesuai Modul Ajar
+   ========================================================================== */
+.materi-konten {
+    color: var(--teks-utama);
+    font-size: 1rem;
+    line-height: 1.8;
+    overflow-wrap: break-word;
+}
+
+.materi-konten h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--teks-utama);
+    margin-top: 2.25rem;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--abu-border);
+    letter-spacing: -0.01em;
+}
+
+.materi-konten h3:first-child {
+    margin-top: 0;
+}
+
+.materi-konten h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--teks-utama);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.materi-konten p {
+    margin-top: 0;
+    margin-bottom: 1.15rem;
+    color: var(--teks-pudar);
+}
+
+.materi-konten strong {
+    color: var(--teks-utama);
+    font-weight: 700;
+}
+
+.materi-konten em {
+    color: var(--teks-pudar);
+}
+
+/* Tabel Materi Rapi & Bersih */
+.materi-konten table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background-color: var(--putih);
+    border: 1px solid var(--abu-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    font-size: 0.925rem;
+}
+
+.materi-konten thead {
+    background-color: var(--abu-latar);
+    border-bottom: 2px solid var(--abu-border);
+}
+
+.materi-konten th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.825rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--teks-utama);
+}
+
+.materi-konten td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--abu-border);
+    color: var(--teks-pudar);
+    vertical-align: middle;
+}
+
+.materi-konten tr:last-child td {
+    border-bottom: none;
+}
+
+.materi-konten tbody tr:nth-child(even) {
+    background-color: var(--putih);
+}
+
+/* Kotak Peringatan & Pengingat Pedagogis (Blockquote) */
+.materi-konten blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    background-color: var(--abu-latar);
+    border: 1px solid var(--abu-border);
+    border-left: 4px solid var(--biru-utama);
+    border-radius: var(--radius-sm);
+    color: var(--teks-pudar);
+    font-size: 0.925rem;
+    line-height: 1.65;
+}
+
+.materi-konten blockquote p {
+    margin: 0;
+    color: inherit;
+}
+
+.materi-konten blockquote strong {
+    color: var(--teks-utama);
+}
+
+/* Inline Code / Istilah Aljabar */
+.materi-konten code {
+    font-family: var(--font-math);
+    font-size: 0.9em;
+    background-color: var(--abu-latar);
+    color: var(--teks-utama);
+    padding: 0.2rem 0.45rem;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--abu-border);
+    font-weight: 600;
+}
+
+/* Daftar Poin & Langkah */
+.materi-konten ul,
+.materi-konten ol {
+    margin: 1rem 0 1.25rem;
+    padding-left: 1.4rem;
+    color: var(--teks-pudar);
+}
+
+.materi-konten li {
+    margin-bottom: 0.5rem;
+    line-height: 1.65;
+}
+
+.materi-konten li::marker {
+    color: var(--biru-utama);
+    font-weight: 700;
+}
+
+/* Formula Matematika KaTeX Display */
+.materi-konten .katex-display {
+    margin: 1.5rem 0;
+    padding: 0.85rem 1rem;
+    background-color: var(--abu-latar);
+    border: 1px solid var(--abu-border);
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: center;
+}
+
+.materi-konten .katex {
+    font-size: 1.08em;
+}
+
+/* Shared layout tuned to the SF typography, hairlines and surfaces in DESIGN.md. */
+.area-konten-utama {
+    margin-left: 264px;
+    max-width: 1440px;
+    padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--abu-latar);
+}
+.sidebar-kiri { width: 264px; }
+.sidebar-kiri {
+    color: var(--teks-utama);
+    background: var(--putih);
+    border-right-color: var(--abu-border);
+}
+.sidebar-kiri .brand-title { color: var(--teks-utama); }
+.sidebar-kiri .brand-subtitle,
+.sidebar-kiri .sidebar-section-title { color: var(--teks-halus); }
+.sidebar-kiri .profil-box { background: var(--biru-muda); border-color: var(--biru-border); }
+.sidebar-kiri .profil-nama { color: var(--teks-utama); }
+.sidebar-kiri .profil-peran { color: var(--biru-utama); }
+.sidebar-kiri .nav-item-link { color: var(--teks-utama); }
+.sidebar-kiri .nav-item-link:hover { background: var(--abu-latar); border-color: var(--abu-border); }
+.sidebar-kiri .nav-item-link.aktif { color: var(--biru-utama); background: var(--biru-muda); border-color: var(--biru-border); }
+.sidebar-kiri .nav-item-link > span > span:first-child { color: var(--biru-utama) !important; }
+.sidebar-kiri .nav-item-link > span > span:last-child { color: var(--teks-utama) !important; }
+.sidebar-kiri .btn { border-radius: var(--radius-sm); }
+.kartu,
+.stat-card,
+.tabel-wadah,
+.lembar-kerja-container,
+.evaluasi-header,
+.evaluasi-soal-card,
+.hasil-skor-card {
+    border-radius: var(--radius-lg);
+    box-shadow: none;
+}
+.btn { border-radius: 9999px; }
+.btn-secondary { border-color: var(--biru-utama); }
+.btn-primary:hover { box-shadow: none; }
+.tabel-wadah { overflow-x: auto; }
+.btn:focus-visible,
+.nav-item-link:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--biru-terang);
+    outline-offset: 2px;
+}
+
+@media (max-width: 833px) {
+    .sidebar-kiri { width: 232px; padding: 1.25rem; }
+    .area-konten-utama { margin-left: 232px; padding: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+    .wadah-aplikasi { display: block; }
+    .sidebar-kiri {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        max-height: none;
+        padding: 1rem;
+        overflow: visible;
+        border-right: 0;
+        border-bottom: 1px solid var(--abu-border);
+    }
+    .area-konten-utama { margin: 0; max-width: none; min-height: 0; padding: 1.25rem 1rem; }
+    .kartu { padding: 1.15rem; }
+}

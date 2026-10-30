@@ -1,0 +1,237 @@
+/* Lembar Kerja Kuis Line-by-Line */
+.lembar-kerja-container {
+    background-color: var(--putih);
+    border: 1px solid var(--abu-border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--bayangan-sm);
+    margin-bottom: 1.5rem;
+}
+
+.soal-header-box {
+    border-bottom: 1px solid var(--abu-border);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.soal-posisi-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--biru-utama);
+    background-color: var(--biru-muda);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.soal-teks-pertanyaan {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--teks-utama);
+    line-height: 1.5;
+}
+
+.petunjuk-mode-soal {
+    margin: 0.85rem 0 0;
+    color: var(--teks-pudar);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Daftar Baris Langkah */
+.daftar-baris-langkah {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.baris-langkah-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.15rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--abu-border);
+    background-color: var(--abu-latar);
+    font-family: var(--font-matematika);
+    font-size: 1.15rem;
+}
+
+.baris-nomor {
+    font-family: var(--font-utama);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--teks-pudar);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--putih);
+    border: 1px solid var(--abu-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.baris-ekspresi {
+    flex: 1;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.baris-status-icon {
+    font-size: 1.1rem;
+}
+
+.baris-langkah-item.benar {
+    background-color: var(--hijau-bg);
+    border-color: var(--hijau-border);
+    color: var(--hijau-benar);
+}
+
+.baris-langkah-item.salah {
+    background-color: var(--merah-bg);
+    border-color: var(--merah-border);
+    color: var(--merah-salah);
+}
+
+/* Baris Input Aktif */
+.baris-input-aktif {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--putih);
+    border: 2px solid var(--biru-utama);
+    border-radius: var(--radius-md);
+    box-shadow: none;
+    margin-bottom: 1.25rem;
+}
+
+.input-ekspresi-field {
+    flex: 1;
+    display: block;
+    width: 100%;
+    min-height: 3rem;
+    border: none;
+    outline: none;
+    font-family: var(--font-matematika);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--teks-utama);
+    background: transparent;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+    .lembar-kerja-container { padding: 1rem; }
+}
+
+.input-ekspresi-field:focus {
+    outline: none;
+}
+
+.keyboard-petunjuk {
+    margin: -0.75rem 0 1.25rem;
+    color: var(--teks-pudar);
+    font-size: 0.8rem;
+}
+
+/* Pesan Umpan Balik Baris */
+.umpan-balik-box {
+    padding: 0.85rem 1.15rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.umpan-balik-box.benar {
+    background-color: var(--hijau-bg);
+    color: var(--hijau-benar);
+    border: 1px solid var(--hijau-border);
+}
+
+.umpan-balik-box.salah {
+    background-color: var(--merah-bg);
+    color: var(--merah-salah);
+    border: 1px solid var(--merah-border);
+}
+
+/* Gelembung Petunjuk Sokratik */
+.gelembung-ai-container {
+    background-color: var(--abu-latar);
+    border: 1px solid var(--abu-border);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.avatar-ai {
+    width: 38px;
+    height: 38px;
+    background-color: var(--biru-utama);
+    color: var(--putih);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.ai-bubble-content {
+    flex: 1;
+}
+
+.ai-bubble-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--biru-gelap);
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ai-bubble-text {
+    font-size: 0.95rem;
+    color: var(--teks-utama);
+    line-height: 1.55;
+}
+
+/* Pembahasan Card */
+.pembahasan-box {
+    background-color: var(--hijau-bg);
+    border: 1px solid var(--hijau-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.pembahasan-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--status-hijau-teks);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pembahasan-isi {
+    font-size: 0.95rem;
+    color: var(--hijau-benar);
+    line-height: 1.55;
+    white-space: pre-line;
+}

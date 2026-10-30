@@ -1,0 +1,140 @@
+/* Evaluasi Akhir CSS */
+.evaluasi-header {
+    background-color: var(--putih);
+    border: 1px solid var(--abu-border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    position: sticky;
+    top: 1rem;
+    z-index: 30;
+    box-shadow: var(--bayangan-sm);
+}
+
+.timer-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--merah-bg);
+    border: 1px solid var(--status-merah-border-terang);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    color: var(--merah-salah);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+}
+
+.nomor-soal-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.nomor-soal-btn {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--abu-border);
+    background-color: var(--putih);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.nomor-soal-btn.aktif {
+    background-color: var(--biru-utama);
+    color: var(--putih);
+    border-color: var(--biru-utama);
+}
+
+.nomor-soal-btn.sudah-isi {
+    background-color: var(--hijau-bg);
+    border-color: var(--hijau-border);
+    color: var(--status-hijau-teks);
+}
+
+.evaluasi-soal-card {
+    background-color: var(--putih);
+    border: 1px solid var(--abu-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--bayangan-sm);
+    margin-bottom: 1.5rem;
+}
+
+.soal-nomor-judul {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--teks-pudar);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.soal-pertanyaan-teks {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--teks-utama);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.input-jawaban-evaluasi {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    border: 2px solid var(--abu-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-matematika);
+    font-size: 1.35rem;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.input-jawaban-evaluasi:focus {
+    border-color: var(--biru-utama);
+    box-shadow: none;
+}
+
+/* Hasil Evaluasi Card */
+.hasil-skor-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--putih);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--abu-border);
+    box-shadow: var(--bayangan-md);
+    margin-bottom: 2rem;
+}
+
+.skor-lingkaran {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.skor-lulus {
+    background-color: var(--hijau-bg);
+    border: 4px solid var(--hijau-benar);
+    color: var(--hijau-benar);
+}
+
+.skor-gagal {
+    background-color: var(--merah-bg);
+    border: 4px solid var(--merah-salah);
+    color: var(--merah-salah);
+}

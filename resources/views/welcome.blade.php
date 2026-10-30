@@ -1,273 +1,216 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AljabarLearn - Media Pembelajaran Aljabar SMP Kelas VII</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>AljabarLearn — Belajar Bentuk Aljabar</title>
+    <link rel="stylesheet" href="{{ asset('css/tema.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tata-letak.css') }}">
     <style>
-        .font-math {
-            font-family: "Cambria Math", Cambria, Georgia, "Times New Roman", serif;
-            font-style: italic;
+        :root {
+            --landing-ink: var(--teks-utama);
+            --landing-blue: var(--biru-utama);
+            --landing-muted: var(--teks-pudar);
+            --landing-line: var(--abu-border);
+            --landing-wash: var(--abu-latar);
+            --landing-white: var(--putih);
+            --landing-blue-hover: var(--biru-hover);
+            --landing-rule: var(--abu-border);
+            --landing-focus: var(--biru-terang);
+            --landing-field: var(--abu-garis);
+            --landing-error: var(--merah-salah);
+            --landing-error-wash: var(--merah-bg);
+            --landing-error-line: var(--merah-border);
+            --landing-success: var(--hijau-benar);
+            --landing-success-wash: var(--hijau-bg);
+            --landing-success-line: var(--hijau-border);
+            --landing-topic-line: var(--abu-border);
+            --landing-disabled: var(--teks-halus);
+        }
+        body { background: var(--landing-white); color: var(--landing-ink); }
+        .site-header { min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 max(1.25rem, calc((100vw - 1080px) / 2)); border-bottom: 1px solid var(--landing-line); background: var(--putih); color: var(--landing-ink); }
+        .brand { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; color: inherit; }
+        .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; background: var(--landing-blue); color: var(--landing-white); font: 700 1rem var(--font-matematika); }
+        .brand-name { color: var(--landing-ink); font-size: 1rem; font-weight: 600; letter-spacing: -.03em; }
+        .site-nav { display: flex; align-items: center; gap: 1.5rem; }
+        .site-nav a { color: var(--landing-muted); font-size: 12px; font-weight: 400; text-decoration: none; }
+        .site-nav a:hover { color: var(--landing-blue); }
+        .page-width { width: min(1080px, calc(100% - 2.5rem)); margin-inline: auto; }
+        .hero { padding-block: clamp(4rem, 10vw, 7.5rem); }
+        .eyebrow { margin: 0 0 1rem; color: var(--landing-blue); font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+        h1, h2, h3 { font-family: var(--font-display); color: var(--landing-ink); }
+        .hero h1 { max-width: 620px; margin: 0 0 1.25rem; font-size: clamp(2.8rem, 6vw, 3.5rem); line-height: 1.07; letter-spacing: -.28px; }
+        .hero-copy { max-width: 510px; margin: 0; color: var(--landing-muted); font-size: 1.05rem; line-height: 1.75; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+        .action { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 11px 22px; border: 1px solid var(--landing-blue); border-radius: 9999px; background: var(--landing-blue); color: var(--landing-white); font-size: 1rem; font-weight: 400; text-decoration: none; }
+        .action:hover { background: var(--landing-blue-hover); }
+        .action-secondary { background: transparent; color: var(--landing-blue); }
+        .action-secondary:hover { background: var(--landing-wash); }
+        .action:active { transform: scale(.95); }
+        .notice-wrap { padding-top: 1rem; }
+        .notice { margin: 0 0 .75rem; padding: .8rem 1rem; border: 1px solid; font-size: .875rem; }
+        .notice-error { color: var(--landing-error); background: var(--landing-error-wash); border-color: var(--landing-error-line); }
+        .notice-success { color: var(--landing-success); background: var(--landing-success-wash); border-color: var(--landing-success-line); }
+        .access-section { padding-block: 4rem; border-top: 1px solid var(--landing-line); }
+        .section-heading { max-width: 650px; margin-bottom: 2rem; }
+        .section-heading h2 { margin: 0 0 .5rem; font-size: clamp(1.7rem, 3vw, 2.2rem); letter-spacing: -.035em; }
+        .section-heading p { margin: 0; color: var(--landing-muted); line-height: 1.65; }
+        .access-grid { display: grid; grid-template-columns: 1.15fr .85fr; border: 1px solid var(--landing-line); }
+        .access-panel { padding: clamp(1.25rem, 3vw, 2rem); }
+        .access-panel + .access-panel { border-left: 1px solid var(--landing-line); background: var(--landing-white); }
+        .access-panel h3 { margin: 0 0 .35rem; font-size: 1.2rem; }
+        .access-panel > p { margin: 0 0 1.5rem; color: var(--landing-muted); font-size: .875rem; line-height: 1.6; }
+        .form-block { padding-bottom: 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--landing-line); }
+        .form-block:last-child { padding: 0; margin: 0; border: 0; }
+        .form-block label { display: block; margin-bottom: .45rem; color: var(--landing-ink); font-size: .8rem; font-weight: 700; }
+        .form-row { display: flex; gap: .5rem; }
+        .form-row input, .form-row select { width: 100%; min-width: 0; min-height: 44px; padding: .65rem .75rem; border: 1px solid var(--landing-field); border-radius: 0; background: var(--landing-white); color: var(--landing-ink); font: inherit; font-size: .875rem; }
+        .form-row input:focus, .form-row select:focus { outline: 2px solid var(--landing-focus); outline-offset: 1px; }
+        .form-row button { flex: 0 0 auto; min-height: 44px; padding: .65rem .9rem; border: 0; background: var(--landing-blue); color: var(--landing-white); font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
+        .form-row button:hover { background: var(--landing-blue-hover); }
+        .form-row button:disabled { background: var(--landing-disabled); cursor: not-allowed; }
+        .teacher-name { margin: 1.25rem 0; padding: .9rem 1rem; border-left: 2px solid var(--landing-blue); background: var(--landing-white); font-weight: 700; }
+        .teacher-name small { display: block; margin-top: .25rem; color: var(--landing-muted); font-size: .8rem; font-weight: 400; line-height: 1.55; }
+        .topics { padding-block: 3.5rem 4rem; background: var(--landing-wash); }
+        .topic-list { border-top: 1px solid var(--landing-topic-line); }
+        .topic { display: grid; grid-template-columns: 52px minmax(180px, .8fr) 1.2fr; gap: 1rem; align-items: baseline; padding: 1.1rem 0; border-bottom: 1px solid var(--landing-topic-line); }
+        .topic-number { color: var(--landing-blue); font-size: .8rem; font-weight: 600; }
+        .topic h3 { margin: 0; font-size: 1rem; }
+        .topic p { margin: 0; color: var(--landing-muted); font-size: .875rem; line-height: 1.6; }
+        .site-footer { padding: 1.5rem 0; border-top: 1px solid var(--landing-line); color: var(--landing-muted); font-size: .8rem; }
+        @media (max-width: 760px) {
+            .access-grid { grid-template-columns: 1fr; }
+            .access-panel + .access-panel { border-top: 1px solid var(--landing-line); border-left: 0; }
+        }
+        @media (max-width: 520px) {
+            .site-header { min-height: 56px; padding-inline: 1rem; }
+            .site-nav { gap: .8rem; }
+            .site-nav a { font-size: .75rem; }
+            .site-nav a:last-child { display: none; }
+            .page-width { width: calc(100% - 2rem); }
+            .hero { padding-block: 3.25rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .form-row { flex-wrap: wrap; }
+            .form-row button { width: 100%; }
+            .topic { grid-template-columns: 36px 1fr; gap: .5rem .75rem; }
+            .topic p { grid-column: 2; }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
-
-    <!-- Top Navigation Bar Landing Page -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <!-- Brand -->
-            <a href="/" class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-sm">
-                    <i class="fas fa-shapes text-lg"></i>
-                </div>
-                <div>
-                    <h1 class="text-lg font-bold text-blue-900 leading-tight">AljabarLearn</h1>
-                    <p class="text-[11px] text-gray-500 font-medium">Matematika SMP Kelas VII</p>
-                </div>
-            </a>
-
-            <!-- Nav Links -->
-            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
-                <a href="#tentang" class="hover:text-blue-600 transition">Tentang Materi</a>
-                <a href="#capaian" class="hover:text-blue-600 transition">Capaian Belajar</a>
-                <a href="#fitur" class="hover:text-blue-600 transition">Fitur Interaktif</a>
-                <a href="#peta" class="hover:text-blue-600 transition">Peta Belajar</a>
-            </nav>
-
-            <!-- Langsung Masuk (Tanpa Login) -->
-            <div class="flex items-center gap-3">
-                <a href="/dashboard" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2">
-                    <span>Masuk ke Pembelajaran</span>
-                    <i class="fas fa-arrow-right text-xs"></i>
-                </a>
-            </div>
-        </div>
+<body>
+    <header class="site-header" data-od-id="header">
+        <a class="brand" href="{{ route('landing') }}" aria-label="AljabarLearn, beranda">
+            <span class="brand-mark" aria-hidden="true">x²</span>
+            <span class="brand-name">AljabarLearn</span>
+        </a>
+        <nav class="site-nav" aria-label="Navigasi utama">
+            <a href="#materi">Materi</a>
+            <a href="#akses">Akses belajar</a>
+        </nav>
     </header>
 
-    <!-- Hero Section (Biru Putih) -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/60 to-white py-16 sm:py-24 border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Teks Hero -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 text-blue-800 text-xs font-bold tracking-wide">
-                        <i class="fas fa-book-open"></i> Kurikulum Merdeka • Bab 4 Bentuk Aljabar
-                    </div>
+    @if(session('error') || session('success'))
+        <div class="page-width notice-wrap" role="status">
+            @if(session('error'))<p class="notice notice-error">{{ session('error') }}</p>@endif
+            @if(session('success'))<p class="notice notice-success">{{ session('success') }}</p>@endif
+        </div>
+    @endif
 
-                    <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-                        Belajar Aljabar Lebih <span class="text-blue-600">Mudah, Visual,</span> & Interaktif
-                    </h1>
+    <main>
+        <section class="hero page-width" data-od-id="hero">
+            <div>
+                <p class="eyebrow">Matematika · Kelas VII · Bab 4</p>
+                <h1>Pahami bentuk aljabar, satu langkah demi satu.</h1>
+                <p class="hero-copy">Pelajari konsep, susun langkah penyelesaian, lalu periksa apakah setiap bentuk tetap setara. Materi dan kuis dapat dibuka untuk latihan.</p>
+                <div class="hero-actions">
+                    <a class="action" href="#akses">Mulai belajar</a>
+                    <a class="action action-secondary" href="#materi">Lihat materi</a>
+                </div>
+            </div>
+        </section>
 
-                    <p class="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        Platform media pembelajaran matematika interaktif untuk SMP/MTs Kelas VII berdasarkan Buku Siswa Resmi Kemendikbudristek 2022. Pahami konsep variabel, simulasi ubin kolam, pemodelan nyata, dan uji kemampuan melalui kuis mandiri.
-                    </p>
-
-                    <!-- Tombol Aksi Langsung Masuk -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
-                        <a href="/dashboard" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
-                            <i class="fas fa-play-circle text-base"></i> Mulai Belajar Sekarang
-                        </a>
-                        <a href="/materi" class="w-full sm:w-auto bg-white hover:bg-gray-50 text-blue-700 border-2 border-blue-200 px-6 py-3.5 rounded-xl font-bold text-sm transition flex items-center justify-center gap-2">
-                            <i class="fas fa-book-reader"></i> Buka Materi Langsung
-                        </a>
-                    </div>
-
-                    <!-- Keterangan Bebas Login -->
-                    <p class="text-xs text-gray-400 flex items-center justify-center lg:justify-start gap-1.5">
-                        <i class="fas fa-check-circle text-emerald-500"></i> Langsung masuk tanpa login atau registrasi
-                    </p>
+        <section id="akses" class="access-section" data-od-id="akses-belajar">
+            <div class="page-width">
+                <div class="section-heading">
+                    <p class="eyebrow">Akses belajar</p>
+                    <h2>Pilih cara masuk</h2>
+                    <p>Siswa dapat melanjutkan dengan akun yang tersedia atau mulai dengan nama baru. Guru masuk ke dasbor pemantauan kelas.</p>
                 </div>
 
-                <!-- Preview Card Hero -->
-                <div class="lg:col-span-5">
-                    <div class="bg-white rounded-3xl p-6 sm:p-7 shadow-xl border border-gray-100 space-y-5 relative">
-                        <div class="flex items-center justify-between border-b border-gray-100 pb-3">
-                            <div class="flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-red-400 inline-block"></span>
-                                <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
-                                <span class="w-3 h-3 rounded-full bg-emerald-400 inline-block"></span>
+                <div class="access-grid">
+                    <div class="access-panel">
+                        <h3>Siswa</h3>
+                        <p>Buka materi, latihan kuis, dan pantau progres belajar.</p>
+                        <form class="form-block" action="{{ route('masuk.siswa') }}" method="POST">
+                            @csrf
+                            <label for="siswa_id">Lanjutkan dengan akun siswa</label>
+                            <div class="form-row">
+                                <select id="siswa_id" name="siswa_id" {{ $siswaList->isEmpty() ? 'disabled' : '' }}>
+                                    @forelse($siswaList as $siswa)
+                                        <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
+                                    @empty
+                                        <option value="">Belum ada akun siswa</option>
+                                    @endforelse
+                                </select>
+                                <button type="submit" {{ $siswaList->isEmpty() ? 'disabled' : '' }}>Masuk</button>
                             </div>
-                            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-md">Bab 4 SMP Kelas VII</span>
+                        </form>
+                        <form class="form-block" action="{{ route('masuk.siswa') }}" method="POST">
+                            @csrf
+                            <label for="nama_baru">Mulai dengan nama baru</label>
+                            <div class="form-row">
+                                <input id="nama_baru" type="text" name="nama_baru" placeholder="Nama lengkap" minlength="2" maxlength="100" required>
+                                <button type="submit">Mulai</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="access-panel">
+                        <h3>Guru</h3>
+                        <p>Lihat progres kelas, riwayat pengerjaan kuis, dan ringkasan materi.</p>
+                        <div class="teacher-name">
+                            {{ $guru->nama ?? 'Akun Guru' }}
+                            <small>Dasbor pemantauan bersifat baca-saja.</small>
                         </div>
-
-                        <!-- Mini Visual Aljabar -->
-                        <div class="bg-blue-600 rounded-2xl p-5 text-white space-y-2">
-                            <span class="text-[11px] text-blue-100 block font-semibold uppercase">Pola Batang Korek Api</span>
-                            <div class="text-2xl font-bold font-serif">1 + 3n = Total Batang</div>
-                            <p class="text-xs text-blue-100">Formula ringkas universal untuk menghitung kebutuhan pola gabungan persegi.</p>
-                        </div>
-
-                        <div class="space-y-2.5 text-xs">
-                            <div class="p-3 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-between">
-                                <span class="text-gray-600 font-medium"><i class="fas fa-square mr-2 text-blue-600"></i> Penguji Ubin Kolam</span>
-                                <span class="font-bold text-blue-700 font-math">4s + 4 = 4(s+1)</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-between">
-                                <span class="text-gray-600 font-medium"><i class="fas fa-route mr-2 text-blue-600"></i> Model Jarak Wisnu</span>
-                                <span class="font-bold text-blue-700 font-math">5.000 - 15t m</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-between">
-                                <span class="text-gray-600 font-medium"><i class="fas fa-check-double mr-2 text-blue-600"></i> Evaluasi Mandiri</span>
-                                <span class="font-bold text-emerald-600">7 Soal Kuis</span>
-                            </div>
-                        </div>
-
-                        <a href="/dashboard" class="block text-center bg-gray-100 hover:bg-blue-50 hover:text-blue-700 text-gray-700 font-bold text-xs py-2.5 rounded-xl transition">
-                            Masuk ke Dasbor Pembelajaran <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                        <form action="{{ route('masuk.guru') }}" method="POST">
+                            @csrf
+                            <div class="form-row"><button type="submit" style="width:100%">Buka dasbor guru</button></div>
+                        </form>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 1: Capaian Pembelajaran (TP 1 - TP 5) -->
-    <section id="capaian" class="py-16 bg-white border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
-            <div class="text-center max-w-2xl mx-auto space-y-2">
-                <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Capaian Pembelajaran</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">5 Tujuan Pembelajaran Bab 4</h2>
-                <p class="text-sm text-gray-500">Dirancang sesuai capaian pembelajaran kurikulum matematika SMP kelas VII.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- TP 1 -->
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80 space-y-3 hover:border-blue-300 transition">
-                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
-                        TP 1
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-base">Variabel & Nilai Berubah</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Menyatakan kuantitas yang berubah-ubah dan kuantitas yang tidak diketahui dengan huruf variabel.
-                    </p>
-                </div>
-
-                <!-- TP 2 -->
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80 space-y-3 hover:border-blue-300 transition">
-                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
-                        TP 2
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-base">Unsur Bentuk Aljabar</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Mengidentifikasi konstanta, koefisien, variabel, dan suku pada bentuk aljabar serta mengaitkannya dengan konteks.
-                    </p>
-                </div>
-
-                <!-- TP 3 -->
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80 space-y-3 hover:border-blue-300 transition">
-                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
-                        TP 3
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-base">Substitusi Nilai</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Menginterpretasikan nilai dari suatu bentuk aljabar yang diperoleh dari substitusi suatu nilai ke variabel.
-                    </p>
-                </div>
-
-                <!-- TP 4 -->
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80 space-y-3 hover:border-blue-300 transition">
-                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
-                        TP 4
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-base">Bentuk Ekuivalen & Operasi</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Mengubah bentuk aljabar ke bentuk ekuivalen menggunakan sifat komutatif, asosiatif, dan distributif.
-                    </p>
-                </div>
-
-                <!-- TP 5 -->
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80 space-y-3 hover:border-blue-300 transition sm:col-span-2 lg:col-span-2">
-                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
-                        TP 5
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-base">Pemodelan Masalah Nyata</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Memodelkan suatu permasalahan sehari-hari menjadi bentuk aljabar dan menggunakannya untuk menyelesaikan permasalahan serta menguji kewajaran hasil.
-                    </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Section 2: Fitur Interaktif & Simulasi -->
-    <section id="fitur" class="py-16 bg-gray-50 border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
-            <div class="text-center max-w-2xl mx-auto space-y-2">
-                <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Metode Interaktif</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Eksplorasi Langsung & Mandiri</h2>
-                <p class="text-sm text-gray-500">Bukan sekadar membaca teks, siswa bereksplorasi dengan alat bantu visual.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Fitur 1 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
-                        <i class="fas fa-shapes"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-base">Simulasi Pola Korek Api</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Temukan pola pembentukan persegi batang korek api dari <span class="font-math">n = 1</span> hingga 20 dengan rumus aljabar <span class="font-math font-bold">1 + 3n</span>.
-                    </p>
+        <section id="materi" class="topics" data-od-id="cakupan-materi">
+            <div class="page-width">
+                <div class="section-heading">
+                    <p class="eyebrow">Bab 4</p>
+                    <h2>Bentuk aljabar</h2>
+                    <p>Tiga pokok bahasan dari mengenali unsur aljabar hingga menggunakannya untuk memodelkan situasi.</p>
                 </div>
-
-                <!-- Fitur 2 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
-                        <i class="fas fa-water"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-base">Penguji Ubin Kolam Renang</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Bandingkan rumus Rani, Joko, Wisnu, Ayu, dan analisis kesalahan rumus Riska yang menghitung sudut kolam secara ganda.
-                    </p>
-                </div>
-
-                <!-- Fitur 3 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-base">Line-by-Line & Hint AI</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        16 soal latihan baris demi baris dengan pemeriksa kesetaraan otomatis, bantuan petunjuk Socratic Hint AI, serta Evaluasi Akhir 7 soal berdurasi 20 menit bebas AI.
-                    </p>
+                <div class="topic-list">
+                    <article class="topic">
+                        <span class="topic-number">01</span>
+                        <h3>Unsur bentuk aljabar</h3>
+                        <p>Variabel, koefisien, konstanta, dan suku.</p>
+                    </article>
+                    <article class="topic">
+                        <span class="topic-number">02</span>
+                        <h3>Sifat dan operasi aljabar</h3>
+                        <p>Sifat distributif serta operasi pada suku sejenis.</p>
+                    </article>
+                    <article class="topic">
+                        <span class="topic-number">03</span>
+                        <h3>Pemodelan aljabar</h3>
+                        <p>Menerjemahkan situasi dan soal cerita ke bentuk aljabar.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Call to Action Banner -->
-    <section class="py-16 bg-blue-600 text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
-            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                Siap Memulai Petualangan Aljabar?
-            </h2>
-            <p class="text-sm sm:text-base text-blue-100 max-w-xl mx-auto leading-relaxed">
-                Akses seluruh materi, laboratorium interaktif, dan evaluasi kuis secara langsung tanpa perlu registrasi akun.
-            </p>
-            <div class="pt-2">
-                <a href="/dashboard" class="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-8 py-3.5 rounded-full font-bold text-sm shadow-lg transition">
-                    <span>Masuk ke Dasbor Sekarang</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Landing Page -->
-    <footer class="bg-white border-t border-gray-200 py-8 text-center text-xs text-gray-500 space-y-2">
-        <div class="flex items-center justify-center gap-2 font-bold text-gray-700 text-sm">
-            <i class="fas fa-shapes text-blue-600"></i> AljabarLearn
-        </div>
-        <p>
-            Sumber Materi: Buku Siswa <em>Matematika untuk SMP/MTs Kelas VII</em>, Bab 4: Bentuk Aljabar (Hal. 124–158).<br>
-            Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia, 2022.
-        </p>
+    <footer class="site-footer">
+        <div class="page-width">AljabarLearn · Media belajar Matematika Kelas VII</div>
     </footer>
-
 </body>
 </html>
